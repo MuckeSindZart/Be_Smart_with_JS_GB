@@ -6,26 +6,26 @@
 function compareVariables(num1, num2) {
   let answer;
 
-  if (!Boolean(Number(num1)) || !Boolean(Number(num2))) {
+  if (isNaN(num1) || isNaN(num2)) {
     answer = "Ошибка! Обе переменных должны бить Числами!";
     return answer;
   }
 
-  switch (Boolean(Number(num1)) & Boolean(Number(num2))) {
-    case (num1 <= 1) & (num2 >= 3):
+  switch (true) {
+    case Boolean(num1 <= 1 && num2 >= 3):
       answer = `Отлично: ${num1} <= 1, а ${num2} >= 3`;
       break;
 
-    case (num1 > 1) & (num2 >= 3):
+    case Boolean(num1 > 1 && num2 >= 3):
       answer = `Ошибка! ${num1} <= 1 Переменная1 должна быть: Num1 <= 1`;
       break;
 
-    case (num1 <= 1) & (num2 < 3):
+    case Boolean(num1 <= 1 && num2 < 3):
       answer = `Ошибка! ${num2} >= 3 Переменная2 должна быть: Num2 >= 3`;
       break;
 
     default:
-      answer = "Ошибка! Переменные должны быть: Num1 <= 1, Num2 >= 3";
+      answer = `Ошибка! ${num1} <= 1, ${num2} >= 3. Переменные должны быть: Num1 <= 1, Num2 >= 3`;
       break;
   }
 
@@ -42,6 +42,7 @@ console.log(`${compareVariables("3", "3")}\n`);
 console.log(`${compareVariables("1", "1")}\n`);
 
 console.log(`${compareVariables("asg", "sg")}\n`);
+console.log(`${compareVariables("1", "sg")}\n`);
 
 //-------------------------------------------------------------//
 /* Задание 2
@@ -131,25 +132,25 @@ function printAnswer(num, numArray) {
   numArray.forEach((element) => {
     switch (true) {
       case element > 999999:
-        answer = answer + `Единицы миллионов ${element / 1000000},\n`;
+        answer = answer + `Единицы миллионов ${Math.floor(element / 1000000)},\n`;
         break;
       case element > 99999:
-        answer = answer + `Сотен тысяч ${element / 100000},\n`;
+        answer = answer + `Сотен тысяч ${Math.floor(element / 100000)},\n`;
         break;
       case element > 9999:
-        answer = answer + `Десяток тысяч ${element / 10000},\n`;
+        answer = answer + `Десяток тысяч ${Math.floor(element / 10000)},\n`;
         break;
       case element > 999:
-        answer = answer + `Единиц тысяч ${element / 1000},\n`;
+        answer = answer + `Единиц тысяч ${Math.floor(element / 1000)},\n`;
         break;
       case element > 99:
-        answer = answer + `Сотен ${element / 100},\n`;
+        answer = answer + `Сотен ${Math.floor(element / 100)},\n`;
         break;
       case element > 9:
-        answer = answer + `Десятков ${element / 10},\n`;
+        answer = answer + `Десятков ${Math.floor(element / 10)},\n`;
         break;
       default:
-        answer = answer + `Единиц ${element / 1}.\n`;
+        answer = answer + `Единиц ${Math.floor(element / 1)}.\n`;
         break;
     }
   });
