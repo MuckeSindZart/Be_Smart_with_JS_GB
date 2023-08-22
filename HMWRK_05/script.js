@@ -77,8 +77,6 @@ const productsTask3 = [
   },
 ];
 
-// Решение 3
-
 productsTask3.forEach(function (item, i, products) {
   item.price = item.price * 0.85;
 });
